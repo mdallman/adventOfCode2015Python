@@ -7,6 +7,7 @@
 #Given a present with sides l, w, h
 #Part 1 - Find the amount of wrapping paper needed.
 
+#calculates the amount of wrapping paper per present.
 def calculateWrapping(sizes):
 
     #Get the length of the sides from string
@@ -31,3 +32,14 @@ def calculateWrapping(sizes):
     paperNeeded = (2 * lw) + (2 * lh) + (2 * wh) + smallestSide
     return paperNeeded
     
+#takes the list and iterates using calculateWrapping
+def allWrapping():
+    totalPaper = 0
+    #f = open("dayTwoTest.txt", "r") #uses the test file
+    f = open("dayTwoInput.txt", "r") #The project input file
+    for line in f:
+        totalPaper += calculateWrapping(line)
+
+    return totalPaper
+
+print("The total amount of wrapping paper needed is:", allWrapping())
