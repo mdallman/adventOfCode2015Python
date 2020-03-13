@@ -10,9 +10,10 @@
 def calculateWrapping(sizes):
 
     #Get the length of the sides from string
-    l = 1
-    w = 2
-    h = 3
+    sides = sizes.split('x')
+    l = int(sides[0])
+    w = int(sides[1])
+    h = int(sides[2])
 
     #Calculate the area of each side.
     lw = l * w
@@ -21,7 +22,12 @@ def calculateWrapping(sizes):
 
     #Calculate the smallest side
     smallestSide = lw
+    if smallestSide > lh:
+        smallestSide = lh
+    elif smallestSide > wh:
+        smallestSide = wh
 
     #Calculates the amount of paper needed
     paperNeeded = (2 * lw) + (2 * lh) + (2 * wh) + smallestSide
+    return paperNeeded
     
