@@ -8,12 +8,13 @@
 #Part 1 - Find the amount of wrapping paper needed.
 
 def calculateWrapping(sizes):
-
+    #This function calculates the armount of paper needed for one present.
     #Get the length of the sides from string
     sides = sizes.split('x')
     l = int(sides[0])
     w = int(sides[1])
     h = int(sides[2])
+    print('Length =',l,'Width =',w,'Height =',h)
 
     #Calculate the area of each side.
     lw = l * w
