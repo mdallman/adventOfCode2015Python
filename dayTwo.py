@@ -14,7 +14,9 @@ def calculateWrapping(sizes):
     l = int(sides[0])
     w = int(sides[1])
     h = int(sides[2])
-    print('Length =',l,'Width =',w,'Height =',h)
+
+    #Checks that input string has been entered correctly.
+    #print('Length =',l,'Width =',w,'Height =',h)
 
     #Calculate the area of each side.
     lw = l * w
@@ -25,10 +27,17 @@ def calculateWrapping(sizes):
     smallestSide = lw
     if smallestSide > lh:
         smallestSide = lh
-    elif smallestSide > wh:
+        
+    if smallestSide > wh:
         smallestSide = wh
 
     #Calculates the amount of paper needed
     paperNeeded = (2 * lw) + (2 * lh) + (2 * wh) + smallestSide
     return paperNeeded
+
+totalPaper = 0
+f = open('dayTwoInput.txt   ',mode='r')
+for x in f.readlines():
+    totalPaper += calculateWrapping(x)
     
+print(totalPaper)
