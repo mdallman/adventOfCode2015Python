@@ -3,11 +3,20 @@
 #  By Matt Dallman     #
 ########################
 
+#TODO write santa class for a more streamlined code.
+
 #Initialise Variables
 xSanta = 0
 ySanta = 0
 santaPosition = [xSanta,ySanta]
-santaHouse = [[0,0]]
+
+xRobo = 0
+yRobo = 0
+roboPosition = [xRobo,yRobo]
+
+santaTurn = 's'
+
+housesVisited = [[0,0]]
 santaInstructions = input('Please enter the instructions for Santa to follow: ')
 
 def movement(direction):
@@ -16,33 +25,65 @@ def movement(direction):
     global ySanta
     global santaPosition
 
+    global xRobo
+    global yRobo
+    global roboPosition
+
+    global santaTurn
+    
     #Reads instructions and moves santa based on them
-    if direction == 'v':
-        ySanta -= 1
-    elif direction == '^':
-        ySanta += 1
-    elif direction == '>':
-        xSanta += 1
-    elif direction == '<':
-        xSanta -= 1
+    if santaTurn == 's':
+        if direction == 'v':
+            ySanta -= 1
+        elif direction == '^':
+            ySanta += 1
+        elif direction == '>':
+            xSanta += 1
+        elif direction == '<':
+            xSanta -= 1
+    elif santaTurn == 'r':
+        if direction == 'v':
+            yRobo -= 1
+        elif direction == '^':
+            yRobo += 1
+        elif direction == '>':
+            xRobo += 1
+        elif direction == '<':
+            xRobo -= 1
 
     santaPosition = [xSanta,ySanta]
+    roboPosition = [xRobo,yRobo]
 
-def checkHouse(position):
+def checkHouse():
     global santaPosition
-    global santaHouse
+    global roboPosition
+    global housesVisited
+    global santaTurn
     housePreviouslyVisited = False
     
-    for house in santaHouse:
+    for house in housesVisited:
     #check if santaPosition exists in housesVisited
-        if santaPosition == house:
+        if santaPosition == house or roboPosition == house:
             housePreviouslyVisited = True
-                
-    if housePreviouslyVisited == False:
-        santaHouse.append(santaPosition)    
+
+    if santaTurn == 's':                
+        if housePreviouslyVisited == False:
+            housesVisited.append(santaPosition)
+    if santaTurn == 'r':
+        if housePreviouslyVisited == False:
+            housesVisited.append(roboPosition)
+
+def changeSanta():
+    global santaTurn
+    if santaTurn == 's':
+        santaTurn = 'r'
+    elif santaTurn == 'r':
+        santaTurn = 's'
+    
 for x in santaInstructions:
     movement(x)
-    checkHouse(santaPosition)
+    checkHouse()
+    changeSanta():
     
 #prints how many houses Santa has visited.
-print('Santa has been to',len(santaHouse),'houses.')
+print('Santa has been to',len(housesVisited),'houses.')
