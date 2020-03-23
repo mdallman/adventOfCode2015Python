@@ -63,14 +63,21 @@ def checkHouse():
     
     for house in housesVisited:
     #check if santaPosition exists in housesVisited
-        if santaPosition == house or roboPosition == house:
-            housePreviouslyVisited = True
 
-    if santaTurn == 's':                
-        if housePreviouslyVisited == False:
+
+        if santaTurn == 's':
+            if santaPosition == house:
+                housePreviouslyVisited = True
+
+        if santaTurn == 'r':
+            if roboPosition == house:
+                housePreviouslyVisited = True
+            
+    if housePreviouslyVisited == False:
+        if santaTurn == 's':
             housesVisited.append(santaPosition)
-    if santaTurn == 'r':
-        if housePreviouslyVisited == False:
+
+        if santaTurn == 'r':
             housesVisited.append(roboPosition)
 
 def changeSanta():
@@ -83,7 +90,7 @@ def changeSanta():
 for x in santaInstructions:
     movement(x)
     checkHouse()
-    changeSanta():
-    
+    changeSanta()
+
 #prints how many houses Santa has visited.
 print('Santa has been to',len(housesVisited),'houses.')
