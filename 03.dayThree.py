@@ -7,8 +7,8 @@
 xSanta = 0
 ySanta = 0
 santaPosition = [xSanta,ySanta]
-santaHouse = []
-housesVisited = 0
+santaHouse = [[0,0]]
+santaInstructions = input('Please enter the instructions for Santa to follow: ')
 
 def movement(direction):
     #Declare variables
@@ -31,11 +31,18 @@ def movement(direction):
 def checkHouse(position):
     global santaPosition
     global santaHouse
-    global housesVisited
-
+    housePreviouslyVisited = False
+    
+    for house in santaHouse:
     #check if santaPosition exists in housesVisited
-    #How to check, binary search/bubble search? - which one to use
-        #if it doesn't exist add it into housesVisited
-
+        if santaPosition == house:
+            housePreviouslyVisited = True
+                
+    if housePreviouslyVisited == False:
+        santaHouse.append(santaPosition)    
+for x in santaInstructions:
+    movement(x)
+    checkHouse(santaPosition)
+    
 #prints how many houses Santa has visited.
 print('Santa has been to',len(santaHouse),'houses.')
