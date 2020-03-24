@@ -20,7 +20,7 @@ def tryHash(key,number):
     return hexKey
 
 def checkZeros(md5Hash):
-    if md5Hash[0:4] == '00000'
+    if md5Hash[0:5] == '00000':
         return True
-    else
+    else:
         return False
