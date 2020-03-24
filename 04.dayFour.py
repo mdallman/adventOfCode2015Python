@@ -10,8 +10,11 @@ secretKey = 'yzbqklnj'
 testSecretKey = 'abcdef'
 testSecretKeyTwo = 'pqrstuv'
 leadingNumber = 0
-hashedKey = ''
 
 def tryHash(key,number):
+    #combines the two strings hashes them and returns the hex.
     numString = str(number)
-    str(key,numString)
+    hashKey = key+numString
+    hashedKey = hashlib.md5(hashKey.encode())
+    hexKey = hashedKey.hexdigest()
+    return hexKey
