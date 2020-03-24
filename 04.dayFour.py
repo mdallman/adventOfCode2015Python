@@ -18,3 +18,9 @@ def tryHash(key,number):
     hashedKey = hashlib.md5(hashKey.encode())
     hexKey = hashedKey.hexdigest()
     return hexKey
+
+def checkZeros(md5Hash):
+    if md5Hash[0:4] == '00000'
+        return True
+    else
+        return False
