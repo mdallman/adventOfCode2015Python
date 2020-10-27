@@ -1,7 +1,7 @@
-########################
-# Advent of Code Day 2 #
-#  By Matt Dallman     #
-########################
+#############################
+# Advent of Code 2015 Day 2 #
+#     By Matt Dallman       #
+#############################
 
 
 #Given a present with sides l, w, h

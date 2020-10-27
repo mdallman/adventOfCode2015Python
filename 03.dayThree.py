@@ -1,7 +1,7 @@
-########################
-# Advent of Code Day 3 #
-#  By Matt Dallman     #
-########################
+#############################
+# Advent of Code 2015 Day 3 #
+#     By Matt Dallman       #
+#############################
 
 #TODO write santa class for a more streamlined code.
 

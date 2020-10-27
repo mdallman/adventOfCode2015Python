@@ -1,7 +1,7 @@
-########################
-# Advent of Code Day 1 #
-#  By Matt Dallman     #
-########################
+#############################
+# Advent of Code 2015 Day 1 #
+#     By Matt Dallman       #
+#############################
 
 
 #Initialise the string, floor and positional numbers
